@@ -10,6 +10,7 @@ const Component = styled(Box)`
     width: 400px;
     margin: auto;
     box-shadow: 5px 2px 5px 2px rgb(0 0 0/ 0.6);
+    border-radius:5%;
 `;
 
 const Image = styled('img')({
@@ -35,7 +36,7 @@ const LoginButton = styled(Button)`
     background: #FB641B;
     color: #fff;
     height: 48px;
-    border-radius: 2px;
+    border-radius: 5px
 `;
 
 const SignupButton = styled(Button)`
@@ -43,7 +44,7 @@ const SignupButton = styled(Button)`
     background: #fff;
     color: #2874f0;
     height: 48px;
-    border-radius: 2px;
+    border-radius: 5px;
     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
 `;
 
@@ -101,6 +102,7 @@ const Login = ({ isUserAuthenticated }) => {
 
             sessionStorage.setItem('accessToken', `Bearer ${response.data.accessToken}`);
             sessionStorage.setItem('refreshToken', `Bearer ${response.data.refreshToken}`);
+            sessionStorage.setItem( 'name',  `${ response.data.name }`);
             setAccount({ name: response.data.name, username: response.data.username });
             
             isUserAuthenticated(true)
@@ -129,7 +131,8 @@ const Login = ({ isUserAuthenticated }) => {
     return (
         <Component>
             <Box>
-                <Image src={imageURL} alt="blog" />
+                {/* <Image src={imageURL} alt="blog" /> */}
+                <h1 style={{textAlign:"center",marginTop:"5%"}}>My Blog</h1>
                 {
                     account === 'login' ?
                         <Wrapper>
